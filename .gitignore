@@ -1,13 +1,15 @@
 #Windows Files
 *.ini
 *.win
-*.bak
-
 
 
 #Files VS2022
 x64/
 *.tlog
+
+#file bak
+*.bak
+
 
 
 # Enrico stuff:
