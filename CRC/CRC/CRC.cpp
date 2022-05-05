@@ -126,10 +126,10 @@ int main(int argc, char** argv) {
     }
     cout << " " << endl;
     int divisore;
-    string Gx("");
     string Dx("");
     cout << "Lunghezza Dx" << endl;
     cin >> divisore;
+    string Gx[divisore];
     for (i = 0; i < divisore; i++) {
         cin >> Gx[i];
     }
