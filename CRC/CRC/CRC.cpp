@@ -39,13 +39,15 @@ using namespace std;
 
 
 string divide(int n, int g, string temp, string gen) {
-
+    
+    //int g=4; //TODO
     //string temp(""); // metti qui il risultato
 
     for (int i = 0; i < n; i++)
     {
         if (gen[0] == temp[i])
         {
+      
             for (int j = 0, k = i; j < g + 1; j++, k++)
             {
                 if (temp[k] ^ gen[j] == 1) {
@@ -125,32 +127,32 @@ int main(int argc, char** argv) {
         cout << Mx[i];
     }
     cout << " " << endl;
-    int divisore;
-    string Dx("");
-    cout << "Lunghezza Dx" << endl;
+    string divisore = "1011";
+    int lunghezza_divisore = divisore.length();
+    /*string Gx("");
+    cout << "Lunghezza Gx" << endl;
     cin >> divisore;
-    string Gx[divisore];
+    //Gx
     for (i = 0; i < divisore; i++) {
         cin >> Gx[i];
     }
     cout << " " << endl;
     for (i = 0; i < divisore; i++)
         cout << Gx[i];
-  
+  */
     string sender;
 
-    sender = divide(nr_bits_da_trasmettere, divisore, Mx, Gx);
+    sender = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx, divisore);
 
-
-    for (int i = 0; i < divisore; i++)
+    for (int i = 0; i < lunghezza_divisore; i++)
     {
         Mx[nr_bits_da_trasmettere + i] = sender[nr_bits_da_trasmettere + i];
-        cout << sender[nr_bits_da_trasmettere + i] << ' ';
+        cout << sender[nr_bits_da_trasmettere + i] << '';
     }
 
     cout << endl;
     cout << "trasmessi" << endl;
-    for (i = 0; i < nr_bits_da_trasmettere + divisore; i++) {
+    for (i = 0; i < nr_bits_da_trasmettere + lunghezza_divisore; i++) {
         cout << Mx[i] << ' ';
     }
     cout << endl;
