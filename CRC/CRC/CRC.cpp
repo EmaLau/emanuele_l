@@ -36,7 +36,7 @@ introdotti del punto precedente
 
 using namespace std;
 
-
+//Emanuele
 
 string divide(int n, int g, string temp, string gen) {
     
@@ -57,7 +57,10 @@ string divide(int n, int g, string temp, string gen) {
                     temp[k] = 0;
                 }*/
                 if (temp[k] == gen[j]) {
-                    temp[k] = 1;
+                    temp[k] = '1';
+                }
+                else if (temp[k] != gen[j]) {
+                    temp[k] = '0';
                 }
             }
         }
@@ -65,7 +68,7 @@ string divide(int n, int g, string temp, string gen) {
     return temp;
 }
 
-// Amir
+// Amir & Emanuele
 string genera_sequenza_bits_da_trasmettere(int nr_bits) {
     string bits(""); // costruttore della classe string
     int random_bit_value = 0;
@@ -91,7 +94,7 @@ int main(int argc, char** argv) {
         cout << "numero bit da trasmettere fuori range (8-32): " << nr_bits_da_trasmettere << endl;
         system("pause");
     }
-    // Amir
+    // Amir & Emanuele
     string Mx("");
 
     // Emanuele
@@ -169,8 +172,7 @@ int main(int argc, char** argv) {
 
 
 
-    //cout << "" << endl;
-    //system("PAUSE");
+
 
     return 0;
 }
