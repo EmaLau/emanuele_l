@@ -147,7 +147,7 @@ int main(int argc, char** argv) {
     for (int i = 0; i < lunghezza_divisore; i++)
     {
         Mx[nr_bits_da_trasmettere + i] = sender[nr_bits_da_trasmettere + i];
-        cout << sender[nr_bits_da_trasmettere + i] << '';
+        cout << sender[nr_bits_da_trasmettere + i] << ' ';
     }
 
     cout << endl;
