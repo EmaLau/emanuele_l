@@ -138,7 +138,7 @@ int main(int argc, char** argv) {
     cout << "" << endl;
     cout << divisore << endl;
     cout << "" << endl;
-    /*string Gx("");
+    /* string Gx("");
     cout << "Lunghezza Gx" << endl;
     cin >> divisore;
     //Gx
@@ -147,8 +147,7 @@ int main(int argc, char** argv) {
     }
     cout << " " << endl;
     for (i = 0; i < divisore; i++)
-        cout << Gx[i];
-  */
+        cout << Gx[i]; */
     string sender;
 
     sender = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx, divisore);
