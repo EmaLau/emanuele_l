@@ -51,10 +51,10 @@ string divide(int n, int g, string temp, string gen) {
             for (int j = 0, k = i; j < g + 1; j++, k++)
             {
                 /*if (temp[k] ^ gen[j] == 1) {
-                    temp[k] = 1;
+                    temp[k] = '1';
                 }
                 else {
-                    temp[k] = 0;
+                    temp[k] = '0';
                 }*/
                 if (temp[k] == gen[j]) {
                     temp[k] = '1';
