@@ -39,15 +39,15 @@ using namespace std;
 //Emanuele
 
 string divide(int n, int g, string temp, string gen) {
-    
-    
+
+
     //string temp(""); // metti qui il risultato
 
     for (int i = 0; i < n; i++)
     {
         if (gen[0] == temp[i])
         {
-      
+
             for (int j = 0, k = i; j < g + 1; j++, k++)
             {
                 /*if (temp[k] ^ gen[j] == 1) {
@@ -103,19 +103,31 @@ int main(int argc, char** argv) {
     for (int i = 0; i < nr_bits_da_trasmettere; i++) { cout << Mx[i]; }
     cout << "" << endl;
 
+
+
+    string divisore;
+    cout << "Inserisci Gx" << endl;
+    cin >> divisore;
+    int lunghezza_divisore = divisore.length();
+    if (lunghezza_divisore < nr_bits_da_trasmettere - 2) {
+        cout << "Gx Valido" << endl;
+        cout << "Gx corrisponde a " << divisore << " e la sua lunghezza e' " << lunghezza_divisore << " Bits" << endl;
+    }
+    else {
+        cout << "Error" << endl;
+    }
     int bits_zero_da_aggiungere_in_coda = 0;
+    bits_zero_da_aggiungere_in_coda = lunghezza_divisore + 1;
+    for (i = nr_bits_da_trasmettere; i < nr_bits_da_trasmettere + bits_zero_da_aggiungere_in_coda; i++)
+        Mx += "0";
+
+    /*int bits_zero_da_aggiungere_in_coda = 0;
     switch (nr_bits_da_trasmettere) {
-        /*case 9:
-            bits_zero_da_aggiungere_in_coda = 0;
-            cout << "G(x)=x";
-            for (i = nr_bits_da_trasmettere; i < nr_bits_da_trasmettere + bits_zero_da_aggiungere_in_coda; i++) {
-                Mx[i] = 0;
-            }*/
 
     case 8:
         bits_zero_da_aggiungere_in_coda = 3;
         cout << "G(x)=x^3+x+1" << endl;
-        
+
         for (i = nr_bits_da_trasmettere; i < nr_bits_da_trasmettere + bits_zero_da_aggiungere_in_coda; i++) {
             Mx += "0";
         }
@@ -132,22 +144,13 @@ int main(int argc, char** argv) {
         }
         cout << Mx[i];
     }
-    cout << " " << endl;
-    string divisore = "1011";
+    cout << " " << endl;*/
+    /*string divisore = "1011";
     int lunghezza_divisore = divisore.length();
     cout << "" << endl;
     cout << divisore << endl;
-    cout << "" << endl;
-    /* string Gx("");
-    cout << "Lunghezza Gx" << endl;
-    cin >> divisore;
-    //Gx
-    for (i = 0; i < divisore; i++) {
-        cin >> Gx[i];
-    }
-    cout << " " << endl;
-    for (i = 0; i < divisore; i++)
-        cout << Gx[i]; */
+    cout << "" << endl;*/
+
     string sender;
 
     sender = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx, divisore);
