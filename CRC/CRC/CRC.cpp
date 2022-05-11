@@ -68,6 +68,25 @@ string divide(int n, int g, string temp, string gen) {
     return temp;
 }
 
+
+
+
+void genera_generatore_Gx(int lgx, string &Divisore) {
+    Divisore += "1";
+    int random_bit_value = 0;
+    srand(time(NULL));
+    for (int i = 1; i < lgx; i++) {
+        random_bit_value = rand() % 2;
+        if (random_bit_value == 0)
+            Divisore += "0";
+        else
+            Divisore += "1";
+    }
+    Divisore += "1";
+}
+
+
+
 // Amir & Emanuele
 string genera_sequenza_bits_da_trasmettere(int nr_bits) {
     string bits(""); // costruttore della classe string
@@ -75,7 +94,7 @@ string genera_sequenza_bits_da_trasmettere(int nr_bits) {
     srand(time(NULL));
     for (int i = 0; i < nr_bits; i++) {
         random_bit_value = rand() % 2;
-        bits.append(std::to_string(random_bit_value));
+        bits.append(to_string(random_bit_value));
     }
 
     return bits;
@@ -84,6 +103,7 @@ string genera_sequenza_bits_da_trasmettere(int nr_bits) {
 int main(int argc, char** argv) {
     // Ema & Amir
     int nr_bits_da_trasmettere, i;
+    string scelta;
     /*cout << "Inserire bit da 8 a 32: ";
     cin >> nr_bits_da_trasmettere;*/
     nr_bits_da_trasmettere = 8; // TODO  sistemare
@@ -105,6 +125,25 @@ int main(int argc, char** argv) {
 
 
 
+   /* string Divisore;
+    int lunghezza_divisore = 0;
+    cout << "(a) Inserire G(x) a mano, (b) generare G(x)" << endl;
+    cin >> scelta;
+    if (scelta == "a") {
+        cin >> Divisore;
+        lunghezza_divisore = Divisore.length();
+    }
+    else if (scelta == "b") {
+        cout << "Inserire lunghezza bit di G(x)" << endl;
+
+        cin >> lunghezza_divisore;
+        genera_generatore_Gx(lunghezza_divisore, Divisore);
+    }
+    cout << Divisore << endl;
+    */
+
+
+    
     string divisore;
     cout << "Inserisci Gx" << endl;
     cin >> divisore;
@@ -120,6 +159,9 @@ int main(int argc, char** argv) {
     bits_zero_da_aggiungere_in_coda = lunghezza_divisore + 1;
     for (i = nr_bits_da_trasmettere; i < nr_bits_da_trasmettere + bits_zero_da_aggiungere_in_coda; i++)
         Mx += "0";
+    
+
+
 
     /*int bits_zero_da_aggiungere_in_coda = 0;
     switch (nr_bits_da_trasmettere) {
