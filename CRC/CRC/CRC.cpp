@@ -40,9 +40,6 @@ using namespace std;
 
 string divide(int n, int g, string temp, string gen) {
 
-
-    //string temp(""); // metti qui il risultato
-
     for (int i = 0; i < n; i++)
     {
         if (gen[0] == temp[i])
@@ -50,12 +47,6 @@ string divide(int n, int g, string temp, string gen) {
 
             for (int j = 0, k = i; j < g + 1; j++, k++)
             {
-                /*if (temp[k] ^ gen[j] == 1) {
-                    temp[k] = '1';
-                }
-                else {
-                    temp[k] = '0';
-                }*/
                 if (temp[k] == gen[j]) {
                     temp[k] = '1';
                 }
