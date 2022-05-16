@@ -62,7 +62,7 @@ string divide(int n, int g, string temp, string gen) {
 
 
 
-void genera_generatore_Gx(int lgx, string &Divisore) {
+/* void genera_generatore_Gx(int lgx, string& Divisore) {
     Divisore += "1";
     int random_bit_value = 0;
     srand(time(NULL));
@@ -74,7 +74,7 @@ void genera_generatore_Gx(int lgx, string &Divisore) {
             Divisore += "1";
     }
     Divisore += "1";
-}
+}*/
 
 
 
@@ -187,7 +187,7 @@ int main(int argc, char** argv) {
     string sender;
 
     sender = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx, divisore);
-
+    cout << "Bit inviati" << endl;
     for (int i = 0; i < lunghezza_divisore; i++)
     {
         Mx[nr_bits_da_trasmettere + i] = sender[nr_bits_da_trasmettere + i];
@@ -202,8 +202,26 @@ int main(int argc, char** argv) {
     cout << endl;
 
 
-
-
+    string receiver;
+    cout << "Bit Ricevuti" << endl;
+    for (int i = 0; i < lunghezza_divisore + nr_bits_da_trasmettere; i++)
+        cout << Mx[i] << ' ';
+    cout << endl;
+    cout << "Scegli quale bit cambiare tra 0-" <<lunghezza_divisore+nr_bits_da_trasmettere<< endl;
+    int b;
+    cin >> b;
+    if (b >= 0 -1) {
+         Mx[b] = - Mx[b];
+     }
+        receiver = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx, divisore);
+        cout << "Errore" << endl;
+        for (int i = 0; i < nr_bits_da_trasmettere + lunghezza_divisore; i++) {
+            if (receiver[i] != 0) {
+                cout << "Errore individuato" << endl;
+                return 0;
+            }
+        }
+        cout << "Errori non individuati" << endl;
 
 
 
