@@ -1,9 +1,14 @@
+#MacOs files
+*.xcodeproj
+
+
 #Windows Files
 *.ini
 *.win
 
 
 #Files VS2022
+.vs/
 x64/
 *.tlog
 
