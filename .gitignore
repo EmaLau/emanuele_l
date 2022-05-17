@@ -5,7 +5,8 @@
 #Windows Files
 *.ini
 *.win
-
+*.exe
+.vscode/
 
 #Files VS2022
 .vs/
