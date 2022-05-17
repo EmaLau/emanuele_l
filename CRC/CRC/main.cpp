@@ -98,7 +98,7 @@ int main(int argc, const char * argv[]) {
         return 0;
     }
     int bits_zero_da_aggiungere_in_coda=lunghezza_divisore+1;
-    for (int i=nr_bits_da_trasmettere; i<nr_bits_da_trasmettere+bits_zero_da_aggiungere_in_coda; i++)
+    for (int i = nr_bits_da_trasmettere; i < nr_bits_da_trasmettere + bits_zero_da_aggiungere_in_coda; i++)
         Mx += "0";
     //Invia
     

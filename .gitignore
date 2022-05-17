@@ -1,6 +1,6 @@
 #MacOs files
-*.xcodeproj
-
+*.xcodeproj/
+.DS_Store
 
 #Windows Files
 *.ini
