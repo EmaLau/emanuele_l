@@ -121,28 +121,5 @@ int main(int argc, const char *argv[])
         cout << Mx[i] << ' ';
     cout << endl;
     
-    //Ricevuto
-    
-    string receiver;
-    cout<<"Ricevuti"<<endl;
-    for(int i=0; i<nr_bits_da_trasmettere+lunghezza_divisore; i++)
-        cout<<Mx[i]<<' ';
-    cout<<endl;
-    cout<<"Metti i bit che vuoi cambiare ( da 0 a"<<nr_bits_da_trasmettere+lunghezza_divisore<<")"<<endl;
-    int b;
-    cin>>b;
-    if(Mx[b]==1)
-        Mx[b]=0;
-    else
-        Mx[b]=1;
-    receiver = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx, divisore);
-    cout<<"Errore:";
-    for(int i=0; i<nr_bits_da_trasmettere+lunghezza_divisore; i++){
-        if(receiver[i]!=0){
-            cout<<"Errore trovato"<<endl;
-            return 0;
-        }
-    }
-    cout<<"Errore non trovato"<<endl;
     return 0;
 }
