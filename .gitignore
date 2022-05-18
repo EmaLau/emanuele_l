@@ -1,12 +1,11 @@
 #MacOs files
-*.xcodeproj/
 .DS_Store
 
 #Windows Files
 *.ini
 *.win
 *.exe
-.vscode/
+
 
 #Files VS2022
 .vs/
