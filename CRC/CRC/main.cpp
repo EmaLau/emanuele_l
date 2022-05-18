@@ -120,6 +120,15 @@ int main(int argc, const char *argv[])
     for (int i = 0; i < nr_bits_da_trasmettere + lunghezza_divisore; i++)
         cout << Mx[i] << ' ';
     cout << endl;
-
+    
+    //Ricevuto
+    
+    string receiver;
+    cout<<"Bt ricevuti"<<endl;
+    for (int i=0; i<lunghezza_divisore+nr_bits_da_trasmettere; i++)
+        cout<<Mx[i]<<' ';
+    cout<<endl;
+    
+    
     return 0;
 }
