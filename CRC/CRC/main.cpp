@@ -41,9 +41,10 @@ string genera_sequenza_bits_da_trasmettere(int nr_bits)
     return bits;
 }
 
-string divide(int n, int g, string temp, string gen)
+string divide(int nr_bits_Mx, int g, string Mx_and_zeros, string gen)
 {
-    for (int i = 0; i < n; i++)
+    string temp = Mx_and_zeros;
+    for (int i = 0; i < nr_bits_Mx; i++)
     {
         if (gen[0] == temp[i])
         {
@@ -57,6 +58,9 @@ string divide(int n, int g, string temp, string gen)
         }
     }
 
+    //TODO migliorare il tutto, questa e' una patch che rimette a posto i bits di MX da trasmettere
+    for (int i = 0; i < nr_bits_Mx; i++)
+        temp[i] = Mx_and_zeros[i];
     return temp;
 }
 
@@ -80,17 +84,16 @@ int main(int argc, const char *argv[])
     string Mx("");
 
     // Emanuele
-    Mx = genera_sequenza_bits_da_trasmettere(nr_bits_da_trasmettere);
-    cout << "Bits da trasmettere (generati casualmente): ";
-    for (int i = 0; i < nr_bits_da_trasmettere; i++)
-        cout << Mx[i];
-    cout << endl;
 
-    if (testing) {   //TODO rimuovere
+    if (!testing) {
+        Mx = genera_sequenza_bits_da_trasmettere(nr_bits_da_trasmettere);
+        cout << endl << "generazione random bit da trasmettere ...";
+    } else {   //TODO rimuovere
         cout << endl << "per test FORZO MX, rimuovere"; 
         Mx = "11111111";
         nr_bits_da_trasmettere = Mx.length();
     }
+    cout << "Bits da trasmettere:\n" << Mx;
 
     string divisore;
     if (testing) {
@@ -109,27 +112,15 @@ int main(int argc, const char *argv[])
     }
     
     int bits_zero_da_aggiungere_in_coda = lunghezza_divisore + 1;
-    Mx += string(bits_zero_da_aggiungere_in_coda, '0'); // oggetto string anonimo, via costruttore di string
+    string Mx_with_zeros = Mx + string(bits_zero_da_aggiungere_in_coda, '0'); // oggetto string anonimo, via costruttore di string
 
     // Invia
-    string sender = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx, divisore);
+    string temp = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx_with_zeros, divisore);
     // proviamo a estrarre il CRC da sender
-    string CRC = sender.substr(nr_bits_da_trasmettere-1,sender.length()-nr_bits_da_trasmettere);
+    string CRC = temp.substr(nr_bits_da_trasmettere-1,temp.length()-nr_bits_da_trasmettere);
+    string bits_to_send = Mx+CRC;
+    cout << endl << "bits to send: " << bits_to_send << " CRC: " << CRC;
 
-    // string substr (size_t pos = 0, size_t len = npos) const;
-    cout << "CRC" << endl;
-
-    for (int i = 0; i < lunghezza_divisore; i++)
-    {
-        Mx[nr_bits_da_trasmettere + 1] = sender[nr_bits_da_trasmettere + 1];
-        cout << sender[nr_bits_da_trasmettere + 1] << ' ';
-    }
-    cout << endl;
-
-    cout << "Trasmessi" << endl;
-    for (int i = 0; i < nr_bits_da_trasmettere + lunghezza_divisore; i++)
-        cout << Mx[i] << ' ';
-    cout << endl;
     
     //Ricevuti
     
