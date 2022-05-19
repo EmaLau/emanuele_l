@@ -27,6 +27,29 @@
 
 using namespace std;
 
+string diff(string string1, string string2){
+    int n=string1.length();
+    string indicatore= string(n, ' ');
+    for(int i=0; i<n; i++){
+        if(string1[i]==string2[i]){
+            indicatore[i]=' ';
+        }else{
+            indicatore[i]= '^';
+        }
+    }
+    return indicatore;
+}
+
+string corrompi(string nr_mx_corr, int nr_bits_mx, int corr){
+    string ret = nr_mx_corr;
+    for(int i=0; i<corr; i++){
+        int corrotto=rand()%nr_bits_mx;
+        ret[corrotto]= nr_mx_corr[corrotto] == '1' ? '0' : '1';
+    }
+    return ret;
+}
+
+
 string genera_sequenza_bits_da_trasmettere(int nr_bits)
 {
     string bits(""); // classe string
@@ -94,7 +117,7 @@ int main(int argc, const char *argv[])
         nr_bits_da_trasmettere = Mx.length();
     }
     cout << "Bits da trasmettere:\n" << Mx;
-
+    cout<<endl;
     string divisore;
     if (testing) {
         divisore = "1101";
@@ -120,11 +143,37 @@ int main(int argc, const char *argv[])
     string CRC = temp.substr(nr_bits_da_trasmettere-1,temp.length()-nr_bits_da_trasmettere);
     string bits_to_send = Mx+CRC;
     cout << endl << "bits to send: " << bits_to_send << " CRC: " << CRC;
-
-    
-    //Ricevuti
+    //Ricevi
     
     
     
+    string receiver = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx_with_zeros, divisore);
+    string CRCv = temp.substr(nr_bits_da_trasmettere-1,temp.length()-nr_bits_da_trasmettere);
+    string bits_verify = Mx+CRCv;
+    cout<<endl<<"Bits to receiver: "<<bits_verify <<" CRC: "<<CRCv;
+    
+    cout<<endl;
+    int corr=0;
+    for(int i=0; i<8; i++){
+        string corrottissimo = corrompi(Mx, nr_bits_da_trasmettere, corr);
+        cout<<endl;
+        cout<<"/------------------/";
+        cout<<endl;
+        cout<<"Corruzione numero "<<i<<endl;
+        string temp_corrotto = divide(nr_bits_da_trasmettere, lunghezza_divisore, corrottissimo, divisore);
+        string CRC_corrotto = temp_corrotto.substr(nr_bits_da_trasmettere-1,temp.length()-nr_bits_da_trasmettere);
+        cout<<"Mx Corrotto"<<endl;
+        cout <<corrottissimo<<" CRC"<<CRC_corrotto;
+        string error = diff(Mx, corrottissimo);
+        cout<<endl;
+        cout<<error;
+        cout<<endl;
+        cout<<endl;
+        corr++;
+    }
+    
+    
+    
+    cout<<endl;
     return 0;
 }
