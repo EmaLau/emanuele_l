@@ -66,7 +66,7 @@ int main(int argc, const char *argv[])
     int nr_bits_da_trasmettere;
     string scelta;
     nr_bits_da_trasmettere = 8;
-    /*cout<<"Inserire bits da 8 a 32: ";
+    /*cout<<"Inserire bits da 8 a 32: "; //TODO
     cin>>nr_bits_da_trasmettere; */
     if (nr_bits_da_trasmettere > 7 && nr_bits_da_trasmettere < 33)
         cout << "numero bits da trasmettere: " << nr_bits_da_trasmettere << endl;
@@ -120,6 +120,10 @@ int main(int argc, const char *argv[])
     for (int i = 0; i < nr_bits_da_trasmettere + lunghezza_divisore; i++)
         cout << Mx[i] << ' ';
     cout << endl;
+    
+    //Ricevuti
+    
+    
     
     return 0;
 }
