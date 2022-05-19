@@ -62,6 +62,7 @@ string divide(int n, int g, string temp, string gen)
 
 int main(int argc, const char *argv[])
 {
+    bool testing = true;
     // Ema & Amir
     int nr_bits_da_trasmettere;
     string scelta;
@@ -85,28 +86,37 @@ int main(int argc, const char *argv[])
         cout << Mx[i];
     cout << endl;
 
+    if (testing) {   //TODO rimuovere
+        cout << endl << "per test FORZO MX, rimuovere"; 
+        Mx = "11111111";
+        nr_bits_da_trasmettere = Mx.length();
+    }
+
     string divisore;
-
-    cout << "Inserisci Gx: ";
-    cin >> divisore;
-
+    if (testing) {
+        divisore = "1101";
+    } else {
+        cout << "Inserisci Gx: ";
+        cin >> divisore;
+    }
     int lunghezza_divisore = divisore.length();
-    if (lunghezza_divisore < nr_bits_da_trasmettere - 2)
+    
+    if (lunghezza_divisore < nr_bits_da_trasmettere - 2) {
         cout << "Gx valido, corrisponde a " << divisore << " e la sua lunghezza e' " << lunghezza_divisore << " Bits" << endl;
-    else
-    {
+    } else {
         cout << "Gx non valido, corrisponde a " << divisore << " e la sua lunghezza e' " << lunghezza_divisore << " Bits, dovrebbe essere massimo " << nr_bits_da_trasmettere - 2 << " Bits" << endl;
         return 0;
     }
+    
     int bits_zero_da_aggiungere_in_coda = lunghezza_divisore + 1;
-    for (int i = nr_bits_da_trasmettere; i < nr_bits_da_trasmettere + bits_zero_da_aggiungere_in_coda; i++)
-        Mx += "0";
+    Mx += string(bits_zero_da_aggiungere_in_coda, '0'); // oggetto string anonimo, via costruttore di string
+
     // Invia
+    string sender = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx, divisore);
+    // proviamo a estrarre il CRC da sender
+    string CRC = sender.substr(nr_bits_da_trasmettere-1,sender.length()-nr_bits_da_trasmettere);
 
-    string sender;
-
-    sender = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx, divisore);
-
+    // string substr (size_t pos = 0, size_t len = npos) const;
     cout << "CRC" << endl;
 
     for (int i = 0; i < lunghezza_divisore; i++)
