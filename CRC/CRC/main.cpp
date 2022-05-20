@@ -89,7 +89,7 @@ string divide(int nr_bits_Mx, int g, string Mx_and_zeros, string gen)
 
 int main(int argc, const char *argv[])
 {
-    bool testing = true;
+    bool testing = false;
     // Ema & Amir
     int nr_bits_da_trasmettere;
     string scelta;
