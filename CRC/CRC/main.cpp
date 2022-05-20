@@ -82,10 +82,15 @@ string divide(int nr_bits_Mx, int g, string Mx_and_zeros, string gen)
     }
 
     //TODO migliorare il tutto, questa e' una patch che rimette a posto i bits di MX da trasmettere
-    for (int i = 0; i < nr_bits_Mx; i++)
-        temp[i] = Mx_and_zeros[i];
+    //for (int i = 0; i < nr_bits_Mx; i++)
+     //   temp[i] = Mx_and_zeros[i];
     return temp;
 }
+
+
+
+
+
 
 int main(int argc, const char *argv[])
 {
@@ -94,8 +99,8 @@ int main(int argc, const char *argv[])
     int nr_bits_da_trasmettere;
     string scelta;
     nr_bits_da_trasmettere = 8;
-    /*cout<<"Inserire bits da 8 a 32: "; //TODO
-    cin>>nr_bits_da_trasmettere; */
+    cout<<"Inserire bits da 8 a 32: ";
+    cin>>nr_bits_da_trasmettere;
     if (nr_bits_da_trasmettere > 7 && nr_bits_da_trasmettere < 33)
         cout << "numero bits da trasmettere: " << nr_bits_da_trasmettere << endl;
     else
@@ -154,17 +159,19 @@ int main(int argc, const char *argv[])
     
     cout<<endl;
     int corr=0;
-    for(int i=0; i<8; i++){
-        string corrottissimo = corrompi(Mx, nr_bits_da_trasmettere, corr);
+    for(int i=0; i<8+1 ; i++){
+        string Mx_Corrotto = corrompi(Mx, nr_bits_da_trasmettere, corr);
+        string Mx_whit_zero_corrotto = Mx_Corrotto + string(bits_zero_da_aggiungere_in_coda, '0');
         cout<<endl;
         cout<<"/------------------/";
         cout<<endl;
         cout<<"Corruzione numero "<<i<<endl;
-        string temp_corrotto = divide(nr_bits_da_trasmettere, lunghezza_divisore, corrottissimo, divisore);
-        string CRC_corrotto = temp_corrotto.substr(nr_bits_da_trasmettere-1,temp.length()-nr_bits_da_trasmettere);
+        string bits_corrotti = divide(nr_bits_da_trasmettere, lunghezza_divisore, Mx_whit_zero_corrotto, divisore);
+        string CRC_corrotto = bits_corrotti.substr(nr_bits_da_trasmettere-1,bits_corrotti.length()-nr_bits_da_trasmettere);
+        string bits_corrotti_uscita = Mx_Corrotto+CRC_corrotto;
         cout<<"Mx Corrotto"<<endl;
-        cout <<corrottissimo<<" CRC"<<CRC_corrotto;
-        string error = diff(Mx, corrottissimo);
+        cout <<bits_corrotti_uscita<<" CRC "<<CRC_corrotto;
+        string error = diff(Mx, Mx_Corrotto);
         cout<<endl;
         cout<<error;
         cout<<endl;
