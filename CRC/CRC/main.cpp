@@ -27,6 +27,21 @@
 
 using namespace std;
 
+string numeri_cambio(string Mx1, string Mx2){
+    string out("");
+    for(int i=0; i<Mx1.length(); i++){
+        if(Mx1[i]==Mx2[i]){
+            
+        }else{
+            out.append(to_string(i));
+            out += "-";
+        }
+    }
+    
+    
+    return out;
+}
+
 string diff(string string1, string string2){
     int n=string1.length();
     string indicatore= string(n, ' ');
@@ -174,6 +189,9 @@ int main(int argc, const char *argv[])
         cout<<endl;
         cout<<error;
         cout<<endl;
+        cout<<"Numeri che sono stasti cambiati ";
+        string cambio= numeri_cambio(Mx_whit_zero_corrotto, Mx_with_zeros );
+        cout<<cambio;
         cout<<endl;
         corr++;
     }
