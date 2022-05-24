@@ -98,7 +98,6 @@ int main(int argc, const char *argv[])
     // Ema & Amir
     int nr_bits_da_trasmettere;
     string scelta;
-    nr_bits_da_trasmettere = 8;
     cout<<"Inserire bits da 8 a 32: ";
     cin>>nr_bits_da_trasmettere;
     if (nr_bits_da_trasmettere > 7 && nr_bits_da_trasmettere < 33)
