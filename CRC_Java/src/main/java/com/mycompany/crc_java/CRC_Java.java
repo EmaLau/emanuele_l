@@ -8,6 +8,7 @@ import java.util.*;
 public class CRC_Java {
 
     public static void main(String[] args) {
+        new Schermata_CRC();
         Scanner input = new Scanner(System.in);
         boolean testing = false;
         
