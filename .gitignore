@@ -286,3 +286,4 @@ fabric.properties
 *.exe
 *.out
 *.app
+/Web Scraper Java/nbproject/private/
