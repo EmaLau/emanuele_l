@@ -43,7 +43,7 @@ string numeri_cambio(string Mx1, string Mx2){
 }
 
 string diff(string string1, string string2){
-    int n=string1.length();
+    long n=string1.length();
     string indicatore= string(n, ' ');
     for(int i=0; i<n; i++){
         if(string1[i]==string2[i]){
@@ -69,7 +69,7 @@ string genera_sequenza_bits_da_trasmettere(int nr_bits)
 {
     string bits(""); // classe string
     int random_bit_value = 0;
-    srand(time(NULL));
+    srand(time_t(NULL));
     for (int i = 0; i < nr_bits; i++)
     {
         random_bit_value = rand() % 2;
