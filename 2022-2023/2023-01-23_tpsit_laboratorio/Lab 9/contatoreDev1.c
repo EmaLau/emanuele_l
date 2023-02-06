@@ -4,12 +4,14 @@
 #include <unistd.h>
 #include <pthread.h>
 #define TANTI 10
-int globale;
+
+
+int contatoreGlobale;
 
 void *cosaFaThread(void *arg){
     int i, locale;
     for(i=0; i<TANTI; i++){
-        printf("\n.Ho letto %d", globale);
+        printf("\n.Ho letto %d", contatoreGlobale);
         sleep(1);
     }
     return NULL;
@@ -23,8 +25,8 @@ int main(int argc, const char * argv[]) {
         abort();
     }
     for(i =0; i<TANTI; i++){
-        globale = globale+1;
-        printf("\nHo scritto %d",globale);
+        contatoreGlobale++;
+        printf("\nHo scritto %d",contatoreGlobale);
         fflush(stdout);
         sleep(1);
     }
@@ -32,7 +34,7 @@ int main(int argc, const char * argv[]) {
         printf("Errore nel join del thread");
         abort();
     }
-    printf("\nglobale vale %d\n", globale);
+    printf("\nglobale vale %d\n", contatoreGlobale);
     exit(0);
     
     return 0;
