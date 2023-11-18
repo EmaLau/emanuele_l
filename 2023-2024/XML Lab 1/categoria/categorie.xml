@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<categorie>
+    <beverages>
+        Beverages
+        <descrizione>
+            Soft drinks, coffees, teas, beers and ales
+        </descrizione>
+    </beverages>
+    <condiments>
+        Condiments
+        <descrizione>
+            Sweet and savory sauces, relishes, spreads, and seasonings
+        </descrizione>
+    </condiments>
+    <confections>
+        Confections
+        <descrizione>
+            Desserts, candies and sweet breads
+        </descrizione>
+    </confections>
+    <dairy_products>
+        Dairy Products
+        <descrizione>
+            Cheeses
+        </descrizione>
+    </dairy_products>
+    <grains-cereals>
+        Grains/Cereals
+        <descrizione>
+            Breads, crackers, pasta and cereal
+        </descrizione>
+    </grains-cereals>
+    <meat-poultry>
+        Meat/Poultry
+        <descrizione>
+            Preparated meats
+        </descrizione>
+    </meat-poultry>
+    <produce>
+        Produce
+        <descrizione>
+            Dried fuit and bean curd
+        </descrizione>
+    </produce>
+</categorie>
