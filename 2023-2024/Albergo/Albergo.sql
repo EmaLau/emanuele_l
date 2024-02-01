@@ -146,7 +146,7 @@ ALTER TABLE `dati_occupanti`
 -- Limiti per la tabella `prenotazione`
 --
 ALTER TABLE `prenotazione`
-  ADD CONSTRAINT `id_prenotante` FOREIGN KEY (`id_prenotante`) REFERENCES `Clienti` (`id_cliente`);
+  ADD CONSTRAINT `id_prenotante` FOREIGN KEY (`id_prenotante`) REFERENCES `cliente` (`id_cliente`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
