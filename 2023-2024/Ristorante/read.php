@@ -11,7 +11,7 @@ $cognome = $_REQUEST['cognome'];
 
 $sql = "INSERT INTO camerieri (nome, cognome) VALUES ('$nome', '$cognome')";
 if(mysqli_query($conn, $sql)){
-    echo "<h3>Data messi con successo</h3>";
+    echo "<h3>Dati messi con successo</h3>";
     echo nl2br("\n$nome \n$cognome");
 }else{
     echo "ERRORE" . mysqli_error($conn);
