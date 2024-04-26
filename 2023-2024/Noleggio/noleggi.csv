@@ -1,4 +1,3 @@
-id_cliente,cognome,nome,data_nascita,data_rilas_patente,num_cell,mail,id_auto,targa,marca,modello,tipo_alimentazione,data_revisione,costo_per_km,data_inizio_noleggio,data_fine_noleggio,km_effettuati
 1,Rossi,Alberto,2001-12-03,2020-12-03,3282875963,AlbertoRossi@gmail.com,2,EF221HU,peugeot,208,elettrica,2021-12-03,"0,25",2022-08-12,2022-08-15,678
 1,Rossi,Alberto,2001-12-03,2020-12-03,3282875963,AlbertoRossi@gmail.com,3,GA356PO,bmw,I3,diesel,2022-07-09,"0,3",2022-08-15,2022-08-19,2078
 1,Rossi,Alberto,2001-12-03,2020-12-03,3282875963,AlbertoRossi@gmail.com,6,GB334YH,audi,Q6,elettrica,2021-12-30,"0,35",2022-08-20,2022-08-25,780
