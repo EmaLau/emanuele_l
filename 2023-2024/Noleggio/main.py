@@ -25,10 +25,12 @@ conn.commit()
 # Carica i dati nella tabella Auto
 df_auto = pd.read_csv(csv_file_path)
 for _, row in df_auto.iterrows():
+    # Sostituisci la virgola con il punto per 'costo_per_km'
+    costo_per_km = float(row['costo_per_km'].replace(',', '.'))
     cursor.execute("""
         INSERT INTO Auto (targa, marca, modello, tipo_alimentazione, data_revisione, costo_per_km)
         VALUES (%s, %s, %s, %s, %s, %s)
-    """, (row['targa'], row['marca'], row['modello'], row['tipo_alimentazione'], row['data_revisione'], row['costo_per_km']))
+    """, (row['targa'], row['marca'], row['modello'], row['tipo_alimentazione'], row['data_revisione'], costo_per_km))
 conn.commit()
 
 # Carica i dati nella tabella Noleggi
