@@ -13,8 +13,9 @@ if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
 
-// Aggiornamento del 5% alla tariffa di noleggio delle auto elettriche
-$sql = "UPDATE Auto SET costo_per_km = costo_per_km * 1.05 WHERE tipo_alimentazione = 'elettrica'";
+// Aggiornamento del 5% alla tariffa di noleggio delle auto
+$alimentazione = $_POST['alimentazione'];
+$sql = "UPDATE Auto SET costo_per_km = costo_per_km * 1.05 WHERE tipo_alimentazione = '$alimentazione'";
 
 if ($conn->query($sql) === TRUE) {
     echo "Aggiornamento completato con successo.";
