@@ -1,6 +1,6 @@
 import mysql.connector
 import pandas as pd
-import numpy as np  # Aggiunto numpy per gestire i valori NaN
+import numpy as np
 
 # Connessione al database
 conn = mysql.connector.connect(
@@ -16,8 +16,7 @@ csv_file_path = "noleggi.csv"
 
 # Carica i dati nella tabella Clienti
 df_clienti = pd.read_csv(csv_file_path)
-# Gestisci i valori NaN nel DataFrame
-df_clienti.fillna('', inplace=True)  # Sostituisci i valori NaN con stringhe vuote
+df_clienti.fillna(value=pd.NA, inplace=True)  # Sostituisci i valori NaN con None
 for _, row in df_clienti.iterrows():
     cursor.execute("""
         INSERT INTO Clienti (cognome, nome, data_nascita, data_rilascio_patente, num_cell, mail)
@@ -27,11 +26,9 @@ conn.commit()
 
 # Carica i dati nella tabella Auto
 df_auto = pd.read_csv(csv_file_path)
-# Gestisci i valori NaN nel DataFrame
-df_auto.fillna('', inplace=True)  # Sostituisci i valori NaN con stringhe vuote
+df_auto.fillna(value=pd.NA, inplace=True)  # Sostituisci i valori NaN con None
 for _, row in df_auto.iterrows():
-    # Sostituisci la virgola con il punto per 'costo_per_km'
-    costo_per_km = float(str(row['costo_per_km']).replace(',', '.')) if row['costo_per_km'] != '' else None
+    costo_per_km = None if pd.isna(row['costo_per_km']) else float(str(row['costo_per_km']).replace(',', '.'))
     cursor.execute("""
         INSERT INTO Auto (targa, marca, modello, tipo_alimentazione, data_revisione, costo_per_km)
         VALUES (%s, %s, %s, %s, %s, %s)
@@ -40,8 +37,7 @@ conn.commit()
 
 # Carica i dati nella tabella Noleggi
 df_noleggi = pd.read_csv(csv_file_path)
-# Gestisci i valori NaN nel DataFrame
-df_noleggi.fillna(0, inplace=True)  # Sostituisci i valori NaN con 0
+df_noleggi.fillna(value=0, inplace=True)  # Sostituisci i valori NaN con 0
 for _, row in df_noleggi.iterrows():
     cursor.execute("""
         INSERT INTO Noleggi (id_cliente, id_auto, data_inizio_noleggio, data_fine_noleggio, km_effettuati)

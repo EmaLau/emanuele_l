@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Noleggio</title>
+</head>
+<body>
+<h1>Query Noleggio</h1>
+<!-- Form per eseguire la query di noleggio -->
+<form action="query.php" method="get">
+    <label for="codice_cliente">Codice Cliente:</label>
+    <input type="text" id="codice_cliente" name="codice_cliente"><br><br>
+    <label for="data_noleggio">Data Noleggio:</label>
+    <input type="text" id="data_noleggio" name="data_noleggio"><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+
+
+<h1>Aggiorna Tariffa Elettrica</h1>
+<button onclick="aggiornaTariffa()">Aggiorna Tariffa</button>
+
+<script>
+    function aggiornaTariffa() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "update_costo.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert(xhr.responseText);
+            }
+        };
+        xhr.send();
+    }
+</script>
+</body>
+</html>
